@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceTenta", "InförTenta\InterfaceTenta.csproj", "{C76DFB43-4A13-4289-848A-2F3526565F27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyformiTenta", "PolyformiTenta\PolyformiTenta.csproj", "{5B6D2764-1FC9-4CE8-81E5-F216E0882C78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillnadMellanInterfaceOchAbstraktKlassTenta", "SkillnadMellanInterfaceOchAbstraktKlassTenta\SkillnadMellanInterfaceOchAbstraktKlassTenta.csproj", "{98742D22-C878-4A8C-BA37-879BFBDDF935}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegaterTenta", "DelegaterTenta\DelegaterTenta.csproj", "{AA4184C4-3714-4AC2-A6C1-68EED998B524}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTenta", "LinqTenta\LinqTenta.csproj", "{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{C76DFB43-4A13-4289-848A-2F3526565F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C76DFB43-4A13-4289-848A-2F3526565F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C76DFB43-4A13-4289-848A-2F3526565F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6D2764-1FC9-4CE8-81E5-F216E0882C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6D2764-1FC9-4CE8-81E5-F216E0882C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6D2764-1FC9-4CE8-81E5-F216E0882C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6D2764-1FC9-4CE8-81E5-F216E0882C78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98742D22-C878-4A8C-BA37-879BFBDDF935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98742D22-C878-4A8C-BA37-879BFBDDF935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98742D22-C878-4A8C-BA37-879BFBDDF935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98742D22-C878-4A8C-BA37-879BFBDDF935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA4184C4-3714-4AC2-A6C1-68EED998B524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA4184C4-3714-4AC2-A6C1-68EED998B524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA4184C4-3714-4AC2-A6C1-68EED998B524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA4184C4-3714-4AC2-A6C1-68EED998B524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
