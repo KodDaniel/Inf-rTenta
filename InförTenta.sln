@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillnadMellanInterfaceOchA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegaterTenta", "DelegaterTenta\DelegaterTenta.csproj", "{AA4184C4-3714-4AC2-A6C1-68EED998B524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTenta", "LinqTenta\LinqTenta.csproj", "{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqInförTenta", "LinqTenta\LinqInförTenta.csproj", "{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq2InförTenta", "Linq2InförTenta\Linq2InförTenta.csproj", "{38E28A4B-67C5-4E83-B7AB-979B4EC7ED26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E28C826-0D3C-4EE2-973A-2ED6DD491D00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E28A4B-67C5-4E83-B7AB-979B4EC7ED26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E28A4B-67C5-4E83-B7AB-979B4EC7ED26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E28A4B-67C5-4E83-B7AB-979B4EC7ED26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E28A4B-67C5-4E83-B7AB-979B4EC7ED26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
