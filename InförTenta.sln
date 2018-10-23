@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReferenceEqualityReferensLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnumSwitchSatsInförTEnta", "EnumSwitchSatsInförTEnta\EnumSwitchSatsInförTEnta.csproj", "{5ECCF963-2C71-4871-86E0-BC19D2F69846}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceImplicitVSExplicitImplemntationInförTenta", "InterfaceImplicitVSExplicitImplemntationInförTenta\InterfaceImplicitVSExplicitImplemntationInförTenta.csproj", "{874F9424-548E-447F-86BA-1633ACD6D167}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{5ECCF963-2C71-4871-86E0-BC19D2F69846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ECCF963-2C71-4871-86E0-BC19D2F69846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ECCF963-2C71-4871-86E0-BC19D2F69846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{874F9424-548E-447F-86BA-1633ACD6D167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{874F9424-548E-447F-86BA-1633ACD6D167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{874F9424-548E-447F-86BA-1633ACD6D167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{874F9424-548E-447F-86BA-1633ACD6D167}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

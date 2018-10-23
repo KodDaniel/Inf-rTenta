@@ -11,10 +11,7 @@ namespace InförTenta
         static void Main(string[] args)
         {
             // Nedan ges kod för ett interface IRitbar samt en klass Fyrkant som implementerar detsamma. 
-            // 1. Vad innebär explicit respektive implicit implementation av interface? (1 poäng).
-            // 2. Skriv kod för klassen Fyrkant som nyttjar explicit implementation. Illustrera vad det innebär (2 poäng).
-            //3. Ange åtminstone en riktlinje för att välja implicit eller explicit implementation. (1 poäng).
-            //4. Illustrera hur polyformi kan erhållas med hjälp av interface (2 poäng).
+            //1. Illustrera med hjälp av koden nedan hur polyformi kan erhållas med hjälp av interface (2 poäng).
         }
     }
 
