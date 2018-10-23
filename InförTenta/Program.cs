@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,27 @@ namespace InförTenta
         static void Main(string[] args)
         {
             // Nedan ges kod för ett interface IRitbar samt en klass Fyrkant som implementerar detsamma. 
-            //1. Illustrera med hjälp av koden nedan hur polyformi kan erhållas med hjälp av interface (2 poäng).
+            //1. Illustrera med hjälp av koden nedan hur polyformi kan erhållas...
+            //med hjälp av interface (2 poäng).
+
+            // Både klaserna Fyrkant och Rectangle implementerar IRitbar
+            var fyrkant = new Fyrkant(new Point(40, 40),new Size(40,23));
+            var rektangel = new Rectangle(new Point(30,20),new Size(80, 10));
+
+            var listaMedRitbaraObjekt = new List<IRitbar>() {fyrkant, rektangel};
+
+            foreach (var item in listaMedRitbaraObjekt)
+            {
+                if(item is Fyrkant)
+                {
+                    Console.WriteLine("Detta är en fyrkant");
+                }
+
+                if (item is Rectangle)
+                {
+                    Console.WriteLine("Detta är en rektangel.");
+                }
+            }
         }
     }
 
@@ -50,18 +71,31 @@ namespace InförTenta
         }
     }
 
+        public class Point
+        {
+            public int X { get; set; }
+            public int Y { get; set; }
 
-    public class Point
-    {
+            public Point(int x, int y)
+            {
+                this.X = x;
+                this.Y = y;
+            }
+        }
 
-    }
+        public class Size
+        {
+            public int Length { get; set; }
+            public int Height { get; set; }
 
-    public class Size
-    {
+            public Size(int length, int height)
+            {
+                this.Height = height;
+                this.Length = length;
+            }
+        }
 
-    }
-
-    public class Pen
+        public class Pen
     {
         public Pen(SolidBrush brush)
         {
@@ -85,10 +119,14 @@ namespace InförTenta
 
     }
 
-    public class Rectangle
+    public class Rectangle:IRitbar
     {
         public Point Position { get; private set; }
         public Size Storlek { get; private set; }
+        public void Rita(Graphics g)
+        {
+            throw new NotImplementedException();
+        }
 
         public Rectangle(Point position, Size storlek)
         {      
