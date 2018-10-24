@@ -10,38 +10,61 @@ namespace SkillnadMellanInterfaceOchAbstraktKlassTenta
     {
         static void Main(string[] args)
         {
-            // 1. Redogör för skillnaden mellan interface och abstrakta klasser. Ge ett kodexempel då...
-           // ...det ens är att föredra framför det andra. Motivera ditt svar.
-
-            // 1 Svar: Ett interface skildrar en "kan-göra"- relation medan en abstrakt klass skildrar...
-            // en "är en"-relation.
-            // I ett interface anger man endast publika medlemmar och behöver därför
-            // ...inte använda några åtkomstoperatorer.
-            // Det går inte att implementera interfacemedlemmar.
-            // En abstrakt klass kan innehåla implementationer...
-            //av till exempel egenskaper och använda sig av åtkomstoperatorer.
-            //En abstrakt klass kan också ha en konstruktorer.
-            // En klass kan ärva av flera interfaces men endast av en (1) abstrakt klass. 
         }
     }
 
-    interface IAnimal
+    public abstract class Mammal
     {
-        // Eftersom denna kod beskriver vad något kan GÖRA så är...
-        // är ett interface mer lämpligt än en abstrakt klass.
-       
-        void MakeNoise();
+        public abstract void Eating();
+        public abstract void Mating(); 
     }
 
-    abstract class Animal
+    // Tameable = "Tämjbar", "Möjlig att tämja".
+    public interface ITameable
     {
-        // Eftersom denna kod beskriver vad något ÄR, så är...
-        //...en abstrakt klass mer lämplig än ett interface.     
-        protected Animal()
+        List<string> Tricks { get; set; }
+        void MakeTricks(string trick);
+    }
+
+    // A Cat IS A Mammal
+    // A Cat CAN be tamed
+    public class Cat: Mammal, ITameable
+    {
+        public List<string> Tricks { get; set; }
+        public void MakeTricks(string trick)
         {
-            
+            // Making trick from the Trick-list.
         }
-        protected abstract void IsThisAnimal(string typeOfAnimal); 
+        public override void Eating()
+        {
+            // Eating Cat-food
+        }
 
+        public override void Mating()
+        {
+            // Mating with other cats
+        }
+    
     }
+
+    // A Whale IS A mammal
+    // A Whale CANNOT be tamed.
+    public class Whale : Mammal
+    {
+        public override void Eating()
+        {
+            // Eating fish
+        }
+
+        public override void Mating()
+        {
+            // Mating with other whales
+        }
+    }
+
+
+   
+
+  
+
 }
