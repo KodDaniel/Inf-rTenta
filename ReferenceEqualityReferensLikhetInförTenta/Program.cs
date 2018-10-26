@@ -10,6 +10,8 @@ namespace ReferenceEqualityReferensLikhetInförTenta
     {
         static void Main(string[] args)
         {
+            
+
         }
         //// Operatorn ”==” testar per default referenslikhet (reference equality) genom att
         //// fastställa huruvida två referenser pekar på samma objekt. Om man ändrar
@@ -23,6 +25,9 @@ namespace ReferenceEqualityReferensLikhetInförTenta
         //// Två objekt av typen A skall betraktas som de samma om dessa medlemmar har
         //// samma värde. Antag att Equalsmetoden redan är ändrad i enlighet med detta.
         //// Överlagra nu även ==- operatorn. Fyll i det som saknas i koden nedan:
+
+          
+
 
         //public static bool operator ==(A a, A b)
         //{

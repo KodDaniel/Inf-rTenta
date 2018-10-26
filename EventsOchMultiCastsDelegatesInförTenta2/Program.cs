@@ -10,27 +10,94 @@ namespace EventsOchMultiCastsDelegatesInförTenta2
     {
         static void Main(string[] args)
         {
-            // Tilldela variablerna func samt action lambdauttryck med korrekt signatur.
+            // Jag är klienten. Som klient skapar jag ett nytt resultat nedan.
+            var nyttResultat = new Resultat { Spelarnamn = "Daniel", Poäng = 33 };
 
+            // Skapar instans av min publisher-klass
+            var rankingObj = new Ranking(); 
+           
+            // Skapar instans av min subscriber-klass
+            var rankingSubObj = new RankingSubscriber(); 
+            
+            // Instance of publisher.event of publisher += instance of subscriber.event handler of subscriber.
+            // Upprättar en prenumeration.
+            rankingObj.NyttHögstaResultat += rankingSubObj.OnNyttHögstaResultat;
+           
+            // Anropar min publisher-klass med ett nytt resultat
+            rankingObj.NyttResultat(nyttResultat);
+        }    
 
-            Func<int, int, bool> myFunc;
-            Action<int, int, bool> myAction;
-        }
+    }  
+    // (Klassen Resultat är FÖRDEFINIERAD I TENTAN)
+    public class Resultat
+    {
+        public string Spelarnamn { get; set; }
+        public int Poäng { get; set; }
+    }
 
-        // Skriv en klass Ranking som kommer att fungera som ett rankingsystem. Låt
-        // Rankingklassen hantera objekt av typen Resultat som är given nedan. När ett nytt
-        // resultat läggs till rankingen så utlöses eventet NyttBästaResultat om det nya
-        // resultatet är det bästa resultatet. Låt de som prenumererar på eventet få information
-        // om vilken spelare som gjort resultatet samt dennes resultat. Skriv ett kort
-        // testprogram som prenumererar på eventet. 
-
-       // (Klassen Resultat är fördefinierad i tentan)
-        public class Resultat
+    // Subscriber-Klass
+    public class RankingSubscriber
+    {
+        // Event Reciver
+        public void OnNyttHögstaResultat(object soruce, RankingArgs args)
         {
-            public string Spelarnamn { get; set; }
-            public int Poäng { get; set; }
+            Console.WriteLine("Det NYA högsta resultatet tillhör {0} med poängen {1}.", args.Spelarnamn,args.Poäng);
+            Console.ReadLine(); 
         }
-
 
     }
+
+    public class RankingArgs : EventArgs
+    {
+        public string Spelarnamn { get; set; }
+        public int Poäng { get; set; }
+    }
+
+    public class Ranking
+    {
+        // Lista som håller alla resultat
+        private List<Resultat> _resultatLista = new List<Resultat>();
+   
+        // Instansvariabel som håller det högsta resultatet just nu 
+        private Resultat _högstaResultat;
+
+        // EVENT OCH DELEGATE IN SAME
+        public event EventHandler<RankingArgs> NyttHögstaResultat;
+  
+        // Metod som avgör om vi har ett nytt högsta
+        public void NyttResultat(Resultat nyttResultat)
+        {
+            // Sorterar listan med det högsta resultatet först, och detta resultatet...
+            // lägger vi sedan i variabeln nuvarandeHögstaResultat
+           var nuvarandeHögstaResultat = _resultatLista.OrderByDescending(a => a.Poäng).Select(a => a.Poäng).First();
+
+            // Adderar det nya resultatet till listan.
+            _resultatLista.Add(nyttResultat);
+
+            // Undersöker om resultatet är det nya högsta
+            if (nyttResultat.Poäng > nuvarandeHögstaResultat)
+            {
+                // Om så är fallet: tildela det nya resultatet instansvariabeln _högstaResultat
+                _högstaResultat = nyttResultat;
+
+                // Kalla på vår Event Publisher där vi skickar med information om nya rekordet 
+                // Denna information finns läggs i ett nytt objekt av klassen RankingArgs
+                OnNyttBästaResultat(new RankingArgs {Spelarnamn = _högstaResultat.Spelarnamn, Poäng = _högstaResultat.Poäng});
+            }
+        }
+
+        // Event publisher
+        public void OnNyttBästaResultat(RankingArgs args)
+        {
+            // Om vi har subscribers: Fortsätt in i if-satsen
+            if (NyttHögstaResultat != null)
+            {
+                NyttHögstaResultat(this, args);
+            }
+        }
+
+    }
+
+
+
 }

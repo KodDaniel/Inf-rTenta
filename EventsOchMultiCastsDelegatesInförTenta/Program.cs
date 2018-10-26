@@ -11,9 +11,8 @@ namespace EventsOchMultiCastsDelegatesInförTenta
         static void Main(string[] args)
         {          
             var konto = new Bankkonto();
-            //konto.OnBalanceChange = new BalanceChangeOnHandler(Konto_OnBalanceChange);     
-            konto.OnBalanceChange += new BalanceChangeOnHandler(Konto_OnBalanceChange);
-
+            //konto.OnBalanceChange += new BalanceChangeOnHandler(Konto_OnBalanceChange);
+            konto.OnBalanceChange += Konto_OnBalanceChange;
         }
         static void Konto_OnBalanceChange(object sender, BalanceArgs e)
         {
@@ -21,20 +20,16 @@ namespace EventsOchMultiCastsDelegatesInförTenta
         }
     }
 
-    public class BalanceArgs : EventArgs
-    {
-        public int Balance;
-        public int OldBalance;
-    }
-    //public delegate void BalanceChangeOnHandler(int nyttSaldo);
-    public delegate void BalanceChangeOnHandler(object obj, BalanceArgs balanceArgs);
+  
+    //public delegate void BalanceChangeOnHandler(object obj, BalanceArgs balanceArgs);
 
 
     public class Bankkonto
     {
-        public event BalanceChangeOnHandler OnBalanceChange;
+        //public event BalanceChangeOnHandler OnBalanceChange;
 
-        //public BalanceChangeOnHandler OnBalanceChange;
+        public event EventHandler<BalanceArgs> OnBalanceChange;
+
 
         private int _saldo;
         public int Saldo
@@ -55,6 +50,11 @@ namespace EventsOchMultiCastsDelegatesInförTenta
                 }
             }
         }
+    }
+    public class BalanceArgs : EventArgs
+    {
+        public int Balance;
+        public int OldBalance;
     }
 }
 
