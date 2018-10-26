@@ -94,7 +94,8 @@ namespace EventsOchMultiCastsDelegatesInförTenta2
         }
 
         // Event publisher
-        public void OnNyttBästaResultat(RankingArgs args)
+        // Notera metodsignaturen: PROTECTED och Virtual
+        protected virtual void OnNyttBästaResultat(RankingArgs args)
         {
             // Om vi har subscribers: Fortsätt in i if-satsen
             if (NyttHögstaResultat != null)

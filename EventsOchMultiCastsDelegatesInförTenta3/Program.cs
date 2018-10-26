@@ -27,6 +27,14 @@ namespace EventsOchMultiCastsDelegatesInförTenta3
             // implementera själv men du kan anta att den blir anropad när en användare skriver ett
             // nytt meddelande i GUI:et.
         }
+
+
+        public class ChattServer
+        {
+
+        }
+
+
        
 
     }
