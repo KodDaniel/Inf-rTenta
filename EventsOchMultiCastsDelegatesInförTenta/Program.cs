@@ -9,34 +9,48 @@ namespace EventsOchMultiCastsDelegatesInförTenta
     class Program
     {
         static void Main(string[] args)
-        {          
+        {
+            var viSkickarInEttSaldo = 300;
+
             var konto = new Bankkonto();
-            //konto.OnBalanceChange += new BalanceChangeOnHandler(Konto_OnBalanceChange);
+            
+            // Notera att du måste upprätta prenumerationen...
+            // innan du sätter ett nytt Saldo...
+            //Annars händer ingenting.
             konto.OnBalanceChange += Konto_OnBalanceChange;
+
+            // Vi sätter nytt saldo
+            konto.Saldo = viSkickarInEttSaldo;
         }
+        // Event Reciver
         static void Konto_OnBalanceChange(object sender, BalanceArgs e)
         {
             Console.WriteLine("Saldot ändrat! Nytt saldo: {0} kr",e.Balance);
+            Console.ReadLine();
         }
     }
 
-  
-    //public delegate void BalanceChangeOnHandler(object obj, BalanceArgs balanceArgs);
-
+    public class BalanceArgs : EventArgs
+    {
+        public int Balance;
+        public int OldBalance;
+    }
 
     public class Bankkonto
     {
-        //public event BalanceChangeOnHandler OnBalanceChange;
-
+        // EVENT och DELGATE in same
         public event EventHandler<BalanceArgs> OnBalanceChange;
-
 
         private int _saldo;
         public int Saldo
         {
             get { return _saldo; }
             set
-            {       
+            {   
+                // Vi skapar ett en instans av BalanceArgs,
+                // i vilken vi tilldelar den klassens variabler.
+                // Sedan skickar vi den till vår Event Reciver...
+                // med hjälp av vårt Event OnBalanceChange.
                 var args = new BalanceArgs
                 {
                     Balance = value,
@@ -51,16 +65,8 @@ namespace EventsOchMultiCastsDelegatesInförTenta
             }
         }
     }
-    public class BalanceArgs : EventArgs
-    {
-        public int Balance;
-        public int OldBalance;
-    }
+   
 }
-
-
-
-
 
 
 
