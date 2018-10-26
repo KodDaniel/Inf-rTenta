@@ -57,7 +57,14 @@ namespace EventsOchMultiCastsDelegatesInförTenta2
     {
         // Lista som håller alla resultat
         private List<Resultat> _resultatLista = new List<Resultat>();
-   
+
+        public Ranking()
+        {
+            // Vi fyller listan med exempelResultat
+            _resultatLista.Add(new Resultat { Spelarnamn = "James", Poäng = 32 });
+            _resultatLista.Add(new Resultat { Spelarnamn = "Oskar", Poäng = 25 });
+            
+        }    
         // Instansvariabel som håller det högsta resultatet just nu 
         private Resultat _högstaResultat;
 
