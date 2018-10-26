@@ -26,31 +26,40 @@ namespace ReferenceEqualityReferensLikhetInförTenta
         //// samma värde. Antag att Equalsmetoden redan är ändrad i enlighet med detta.
         //// Överlagra nu även ==- operatorn. Fyll i det som saknas i koden nedan:
 
-          
 
+        public static A a;
 
-        //public static bool operator ==(A a, A b)
-        //{
-        //    // Om båda är null eller båda refererar samma instans
-        //    if (System.Object.ReferenceEquals(a, b))
-        //    {
-        //        //??
-        //    }
+        public enum A
+        {
+            // Our constants 
+           Färg,
+           Storlek,
+           Vikt           
+        }
 
-        //    // Om en är en null men inte båda
-        //    if ((object) a == null || (object) b == null)
-        //    {
-        //        //??
-        //    }
+        public static bool operator ==(A a, A b)
+        {
+            // Om båda är null eller båda refererar samma instans
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                
+            }
 
-        //    // Om medlemmarna är lika
-        //    //??
-        //}
+            // Om en är en null men inte båda
+            if ((object)a == null || (object)b == null)
+            {
+                //??
+            }
 
-        //// När vi ändrar operator == måste vi även ändra != 
-        //public static bool operator !=(A a, A b)
-        //{
-        //    ??
-        //}
+            // Om medlemmarna är lika
+            //??
+        }
+
+        // När vi ändrar operator == måste vi även ändra != 
+        public static bool operator !=(A a, A b)
+        {
+            
+        }
     }
-}
+
+
