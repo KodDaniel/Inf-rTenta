@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,21 +12,45 @@ namespace PolyformiTenta
     {
         static void Main(string[] args)
         {
-            // 1. Det finns två sätt att nyttja polymorfi, genom arv och genom implementation av interface.
-            // Välj ett av...
-            //...sätten och skriv de klasser och interface som du behöver...
-            //samt ett testprogram där du illustrerar  polymorfi.
 
-            // Svar: Polymorfi är när samma metodsignatur har olika implementation I olika klasser.
-            // Vid arv ska nyckelordet virtual eller abstract användas för att det ska vara möjligt att
-            // ...definiera om metoden i//barnklasserna.
-            // Polymorfi genom interface: s är att olika klasser implementerar samma interface och
-            //implementationen av interfacet är då specifik för de olika klasserna.
+            var VD = new VD();
 
+            VD.SkrivUtNamnn("Bill Gates");
 
+            VD.SkrivUtMinimilön();
+
+            Console.ReadLine();
+        }
+    }  
+    abstract class Anställd
+    {
+        public void SkrivUtNamnn(string namn)
+        {
+            Console.WriteLine("Den anställde heter {0}",namn);
+        }
+
+        public virtual void SkrivUtMinimilön()
+        {
+            Console.WriteLine("Minimlönen är 3000 kronor per år");
+        }     
+    }
+
+    class VD: Anställd
+    {
+        public override void SkrivUtMinimilön()
+        {
+            Console.WriteLine("En VD kan tjäna hur mycket som helst.");
         }
     }
 
+    
+
+
+
+
+
 }
+
+
 
 

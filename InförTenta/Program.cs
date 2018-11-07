@@ -15,13 +15,13 @@ namespace InförTenta
             //1. Illustrera med hjälp av koden nedan hur polyformi kan erhållas...
             //med hjälp av interface (2 poäng).
 
-            // Både klaserna Fyrkant och Rectangle implementerar IRitbar
-            var fyrkant = new Fyrkant(new Point(40, 40),new Size(40,23));
-            var rektangel = new Rectangle(new Point(30,20),new Size(80, 10));
+            // Både klasserna Fyrkant och Rectangle implementerar IRitbar
+            var fyrkant = new Fyrkant();
+            var rektangel = new Rectangle();
 
             var listaMedRitbaraObjekt = new List<IRitbar>() {fyrkant, rektangel};
 
-            foreach (var item in listaMedRitbaraObjekt)
+            foreach (IRitbar item in listaMedRitbaraObjekt)
             {
                 if(item is Fyrkant)
                 {
@@ -48,11 +48,11 @@ namespace InförTenta
        public Point Position { get; private set; }
        public Size Storlek { get; private set; }
 
-        public Fyrkant(Point position, Size storlek)
-        {
-            this.Storlek = storlek;
-            this.Position = position;
-        }
+        //public Fyrkant(Point position, Size storlek)
+        //{
+        //    this.Storlek = storlek;
+        //    this.Position = position;
+        //}
 
         public void Rita(Graphics g)
         {
@@ -128,11 +128,11 @@ namespace InförTenta
             throw new NotImplementedException();
         }
 
-        public Rectangle(Point position, Size storlek)
-        {      
-            this.Storlek = storlek;
-            this.Position = position;        
-        }
+        //public Rectangle(Point position, Size storlek)
+        //{      
+        //    this.Storlek = storlek;
+        //    this.Position = position;        
+        //}
     }
   
 }

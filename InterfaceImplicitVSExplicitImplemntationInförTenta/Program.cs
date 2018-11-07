@@ -9,24 +9,8 @@ namespace InterfaceImplicitVSExplicitImplemntationInförTenta
     class Program
     {
         static void Main(string[] args)
-        {
-            // Nedan ges kod för ett interface IRitbar samt en klass Fyrkant som implementerar detsamma. 
-            // 1. Vad innebär explicit respektive implicit implementation av interface? (1 poäng).
-            // 2. Skriv kod för klassen Fyrkant som nyttjar explicit implementation. Illustrera vad det innebär (2 poäng).
-            //3. Ange åtminstone en riktlinje för att välja implicit eller explicit implementation. (1 poäng).
-
-            // 1 Svar: Implicit implementation innebär att metoderna är implementerade som vilka andra metoder som helst. Vid en...
-            //implicit implementation kan metoderna anropas på ett vanligt sätt genom syntaxen 'Instans.Metodnamn'. 
-            // Om ett interface implementeras explicit så implementeras alla interfacemedlemmar med prefixet...
-            //för det aktuella interfacet (i detta fall prefixet 'IRitbar'). Vid en explicit implementation är...
-            //medlemmarna direkt associerade med interfacetypen och operatorerna virtual, override och public...
-            // är inte tillåtna för att de alltid antas av kompilatorn. Metoderna är inte åtkomstbara direkt...
-            // genom syntaxen 'Instans.Metodnamn' utan instansen måste typomvandlas till interfacetypen först.
-
-            //var fyrkant = new Fyrkant(new Point(50, 75), new Size(20, 40));
-            //fyrkant.Rita(new Graphics());
-
-            var fyrkant = new Fyrkant();
+        {        
+            var fyrkant = new Fyrkant(new Point(23,23),new Size(2,1));
             IRitbar ritbar = fyrkant as IRitbar;
             ritbar.Rita(new Graphics());
         }
@@ -40,15 +24,19 @@ namespace InterfaceImplicitVSExplicitImplemntationInförTenta
 
         public class Fyrkant : IRitbar
         {
-            Point IRitbar.Position { get; }
-            Size IRitbar.Storlek { get; }
+           public Point Position { get; private set; }
+           public Size Storlek { get; private set; }
 
+            public Fyrkant(Point position, Size storlek)
+            {
+                this.Position = position;
+                this.Storlek = storlek;
+            }
 
             void IRitbar.Rita(Graphics g)
             {
-                g.DrawRectangle(
-                    new Pen(new SolidBrush(Color.Black)),
-                    new Rectangle(((IRitbar) this).Position, ((IRitbar) this).Storlek));
+               g.DrawRectangle(new Pen(new SolidBrush(Color.Black)), 
+                   new Rectangle(Position,Storlek));             
             }
 
 

@@ -17,11 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq2InförTenta", "Linq2In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linq3InförTenta", "Linq3InförTenta\Linq3InförTenta.csproj", "{737A0B7B-A973-4256-A2D5-58E2832A6DBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsOchMultiCastsDelegatesInförTenta", "EventsOchMultiCastsDelegatesInförTenta\EventsOchMultiCastsDelegatesInförTenta.csproj", "{319144D1-4468-4FA2-ABC4-39BA32548583}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsBankkonto", "EventsOchMultiCastsDelegatesInförTenta\EventsBankkonto.csproj", "{319144D1-4468-4FA2-ABC4-39BA32548583}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsOchMultiCastsDelegatesInförTenta2", "EventsOchMultiCastsDelegatesInförTenta2\EventsOchMultiCastsDelegatesInförTenta2.csproj", "{97FC94FF-32F8-4E0C-AA4F-E81CBC402218}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsRanking", "EventsOchMultiCastsDelegatesInförTenta2\EventsRanking.csproj", "{97FC94FF-32F8-4E0C-AA4F-E81CBC402218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsOchMultiCastsDelegatesInförTenta3", "EventsOchMultiCastsDelegatesInförTenta3\EventsOchMultiCastsDelegatesInförTenta3.csproj", "{398C664D-A3D8-4FDA-B9A5-6071C5423FA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsChattServer", "EventsOchMultiCastsDelegatesInförTenta3\EventsChattServer.csproj", "{398C664D-A3D8-4FDA-B9A5-6071C5423FA4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsInförTenta", "GenericsInförTenta\GenericsInförTenta.csproj", "{2D011B07-6D0E-4887-B770-F56B84E27AE8}"
 EndProject
@@ -34,6 +34,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceImplicitVSExplicitImplemntationInförTenta", "InterfaceImplicitVSExplicitImplemntationInförTenta\InterfaceImplicitVSExplicitImplemntationInförTenta.csproj", "{874F9424-548E-447F-86BA-1633ACD6D167}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxingUnBoxingInförTenta", "BoxingUnBoxingInförTenta\BoxingUnBoxingInförTenta.csproj", "{51B2AE8E-037F-49E3-B70C-9C1211D8BE0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOperators", "OverridingOperators\OverridingOperators.csproj", "{818F0851-17BB-434C-B0D2-B1B4DB80B853}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOperators2", "OverridingOperators2\OverridingOperators2.csproj", "{3B9A7AD2-4010-44A0-8ED4-C6FABAF2255B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsOrdinareOOP2TentaFråga", "EventsOrdinareOOP2TentaFråga\EventsOrdinareOOP2TentaFråga.csproj", "{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +111,18 @@ Global
 		{51B2AE8E-037F-49E3-B70C-9C1211D8BE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51B2AE8E-037F-49E3-B70C-9C1211D8BE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B2AE8E-037F-49E3-B70C-9C1211D8BE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{818F0851-17BB-434C-B0D2-B1B4DB80B853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{818F0851-17BB-434C-B0D2-B1B4DB80B853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{818F0851-17BB-434C-B0D2-B1B4DB80B853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{818F0851-17BB-434C-B0D2-B1B4DB80B853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9A7AD2-4010-44A0-8ED4-C6FABAF2255B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9A7AD2-4010-44A0-8ED4-C6FABAF2255B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9A7AD2-4010-44A0-8ED4-C6FABAF2255B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9A7AD2-4010-44A0-8ED4-C6FABAF2255B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

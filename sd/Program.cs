@@ -4,40 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Linq3InförTenta
+namespace sd
 {
     class Program
     {
         static void Main(string[] args)
         {
-           
-
             var db = new DB();
+
             var svar = db.Orders.Select(o =>
                 new
                 {
-                    // sparar namnet på vår kund i ett kundobjekt
-                    // o är enbart en instans av klassen order.
-                    // or är OCKSÅ enbart en instans av klassen order.
                     Kund = o.Kund.Namn,
-                    // WHERE vår kund är lika med en kund på orderlista -> räkna det totala priset
                     Summa = db.Orders.Where(or => or.Kund == o.Kund).Sum(or => or.Produkt.Pris)
-                } );
-        } 
+                });
+        }
     }
-    // Följande klasser är givna:
 
-    public class DB
+    public class Produkt
     {
-        public IEnumerable<Produkt> Produkter { get; private set; }
-        public IEnumerable<Order> Orders { get; private set; }
-        public IEnumerable<Kund> Kunder { get; private set; }
+        public int ProduktId { get; set; }
+        public string Namn { get; set; }
+        public int Pris { get; set; }
     }
+
     public class Order
     {
         public int OrderId { get; set; }
         public Produkt Produkt { get; set; }
         public Kund Kund { get; set; }
+
     }
 
     public class Kund
@@ -46,14 +42,11 @@ namespace Linq3InförTenta
         public string Namn { get; set; }
         public int Ålder { get; set; }
     }
-    public class Produkt
+
+    public class DB
     {
-        public int ProduktId { get; set; }
-        public string Namn { get; set; }
-        public int Pris { get; set; }
+        public IEnumerable<Produkt> Produkter { get; set; }
+        public IEnumerable<Order> Orders { get; set; }
+        public IEnumerable<Kund> Kunder { get; set; }
     }
- 
-
-
-   
 }

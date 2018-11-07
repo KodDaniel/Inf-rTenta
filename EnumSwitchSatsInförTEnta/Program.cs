@@ -9,8 +9,12 @@ namespace EnumSwitchSatsInförTEnta
 {
     class Program
     {
-        static WeaponType weaponType;
+        // Typ - INTE VARAIBEL. Detta är samma som om vi hade skrivit:
+        private List<int> lista; 
 
+        private static WeaponType weaponType
+
+        // Detta är variabeln (som vi också tilldelar)
         public enum WeaponType
         {
             // Our constants 
@@ -44,18 +48,21 @@ namespace EnumSwitchSatsInförTEnta
                 default:
                     Console.WriteLine("We have a UKNOWN weapon.");
                     break;
+
+
             }
 
-        }
+            Console.ReadLine();
 
+        }
         // An enum is short for "Enumrator".
         // It can be declared within a class or within a namespace - but not within a function. 
         // An enum is a way for us to create a datatype which we can limit ourself to specific things.
         // Like a string is specified to letters...
         //... and a UInt is specified to positive numbers.
-       
 
-      
+
+
     }
 
 

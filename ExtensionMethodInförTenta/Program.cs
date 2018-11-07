@@ -19,7 +19,6 @@ namespace ExtensionMethodInförTenta
                 new Person()
                 {
                     Namn = "Daniel Åhlin",
-
                 },
                 new Person()
                 {

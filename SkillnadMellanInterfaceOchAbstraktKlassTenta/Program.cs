@@ -16,7 +16,6 @@ namespace SkillnadMellanInterfaceOchAbstraktKlassTenta
     public abstract class Mammal
     {
         public abstract void Eating();
-        public abstract void Mating(); 
     }
 
     // Tameable = "Tämjbar", "Möjlig att tämja".
@@ -26,8 +25,8 @@ namespace SkillnadMellanInterfaceOchAbstraktKlassTenta
         void MakeTricks(string trick);
     }
 
-    // A Cat IS A Mammal
-    // A Cat CAN be tamed
+    // A Cat IS A Mammal: ABSTRACT
+    // A Cat CAN be tamed: INTERFACE
     public class Cat: Mammal, ITameable
     {
         public List<string> Tricks { get; set; }
@@ -35,31 +34,15 @@ namespace SkillnadMellanInterfaceOchAbstraktKlassTenta
         {
             // Making trick from the Trick-list.
         }
+        // Overriding method from Abstract Class
         public override void Eating()
         {
-            // Eating Cat-food
+            Console.WriteLine("*Eating fish*");
         }
 
-        public override void Mating()
-        {
-            // Mating with other cats
-        }
-    
     }
 
-    // A Whale IS A mammal
-    // A Whale CANNOT be tamed.
-    public class Whale : Mammal
-    {
-        public override void Eating()
-        {
-            // Eating fish
-        }
-
-        public override void Mating()
-        {
-            // Mating with other whales
-        }
+    
     }
 
 
