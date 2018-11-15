@@ -10,26 +10,30 @@ namespace DelegaterTenta
 {
     class Program
     {
-        public delegate void PrintHandler(string text);
+        // Deklarerar en delegattyp
+        public delegate int Addition(int tal1, int tal2);
+   
 
         static void Main(string[] args)
         {
-            PrintHandler printHandler = text => Console.WriteLine(text);
-            printHandler += text => Console.WriteLine("Du skrev: " + text);
 
-            printHandler("Modo är inte bra");
+           var enumerableWithNumbers = Enumerable.Range(0, 10);
+        
+            // Skriver ut på konsolen med Lambda Expression.
+            enumerableWithNumbers.ToList().ForEach(x=>Console.WriteLine(x));
             Console.ReadLine();
         }
-      
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
+
+
 }
 
 

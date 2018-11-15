@@ -21,9 +21,12 @@ namespace Linq3InförTenta
                     // or är OCKSÅ enbart en instans av klassen order.
                     Kund = o.Kund.Namn,
                     // WHERE vår kund är lika med en kund på orderlista -> räkna det totala priset
+
                     Summa = db.Orders.Where(or => or.Kund == o.Kund).Sum(or => or.Produkt.Pris)
                 } );
-        } 
+
+
+        }
     }
     // Följande klasser är givna:
 

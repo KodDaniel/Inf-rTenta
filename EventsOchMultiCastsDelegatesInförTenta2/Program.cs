@@ -8,23 +8,16 @@ namespace EventsRanking
 {
     class Program
     {
+        public static void RankingReciver(object sender, RankingArgs e)
+        {
+            Console.WriteLine(e.Spelarnamn + " " + e.Poäng);
+        }
+
         static void Main(string[] args)
         {
-            // Jag är klienten. Som klient skapar jag ett nytt resultat nedan.
-            var nyttResultat = new Resultat { Spelarnamn = "Daniel", Poäng = 33 };
-
-            // Skapar instans av min publisher-klass
-            var rankingObj = new Ranking(); 
-           
-            // Skapar instans av min subscriber-klass
-            var rankingSubObj = new RankingSubscriber(); 
-            
-            // Instance of publisher.event of publisher += instance of subscriber.event handler of subscriber.
-            // Upprättar en prenumeration.
-            rankingObj.NyttHögstaResultat += rankingSubObj.OnNyttHögstaResultat;
-           
-            // Anropar min publisher-klass med ett nytt resultat
-            rankingObj.NyttResultat(nyttResultat);
+          var rankingObject = new Ranking();
+          rankingObject.NyttBästaResultat += RankingReciver;
+          
         }    
 
     }  
@@ -35,18 +28,8 @@ namespace EventsRanking
         public int Poäng { get; set; }
     }
 
-    // Subscriber-Klass
-    public class RankingSubscriber
-    {
-        // Event Reciver
-        public void OnNyttHögstaResultat(object soruce, RankingArgs args)
-        {
-            Console.WriteLine("Det NYA högsta resultatet tillhör {0} med poängen {1}.", args.Spelarnamn,args.Poäng);
-            Console.ReadLine(); 
-        }
 
-    }
-
+    
     public class RankingArgs : EventArgs
     {
         public string Spelarnamn { get; set; }
@@ -55,57 +38,43 @@ namespace EventsRanking
 
     public class Ranking
     {
-        // Lista som håller alla resultat
+        public event EventHandler<RankingArgs> NyttBästaResultat;
+
         private List<Resultat> _resultatLista = new List<Resultat>();
+        private Resultat _högstaResultat = new Resultat();
 
-        public Ranking()
+        public void NyttBästaResultatEllerInte(Resultat nyttResultat)
         {
-            // Vi fyller listan med exempelResultat
-            _resultatLista.Add(new Resultat { Spelarnamn = "James", Poäng = 32 });
-            _resultatLista.Add(new Resultat { Spelarnamn = "Oskar", Poäng = 25 });
-            
-        }    
-        // Instansvariabel som håller det högsta resultatet just nu 
-        private Resultat _högstaResultat;
-
-        // EVENT OCH DELEGATE IN SAME
-        public event EventHandler<RankingArgs> NyttHögstaResultat;
-  
-        // Metod som avgör om vi har ett nytt högsta
-        public void NyttResultat(Resultat nyttResultat)
-        {
-            // Sorterar listan med det högsta resultatet först, och detta resultatet...
-            // lägger vi sedan i variabeln nuvarandeHögstaResultat
-           var nuvarandeHögstaResultat = _resultatLista.OrderByDescending(a => a.Poäng).Select(a => a.Poäng).First();
-
-            // Adderar det nya resultatet till listan.
-            _resultatLista.Add(nyttResultat);
-
-            // Undersöker om resultatet är det nya högsta
-            if (nyttResultat.Poäng > nuvarandeHögstaResultat)
+            if (nyttResultat.Poäng > _högstaResultat.Poäng)
             {
-                // Om så är fallet: tildela det nya resultatet instansvariabeln _högstaResultat
                 _högstaResultat = nyttResultat;
 
-                // Kalla på vår Event Publisher där vi skickar med information om nya rekordet 
-                // Denna information finns läggs i ett nytt objekt av klassen RankingArgs
-                OnNyttBästaResultat(new RankingArgs {Spelarnamn = _högstaResultat.Spelarnamn, Poäng = _högstaResultat.Poäng});
+                OnNyttBästaResultat(new RankingArgs
+                    {Spelarnamn = _högstaResultat.Spelarnamn,
+                     Poäng = _högstaResultat.Poäng});
             }
         }
 
-        // Event publisher
-        // Notera metodsignaturen: PROTECTED och Virtual
-        protected virtual void OnNyttBästaResultat(RankingArgs args)
+
+
+
+
+        protected void OnNyttBästaResultat(RankingArgs args)
         {
-            // Om vi har subscribers: Fortsätt in i if-satsen
-            if (NyttHögstaResultat != null)
+            if (NyttBästaResultat != null)
             {
-                NyttHögstaResultat(this, args);
+                NyttBästaResultat(this, args);
             }
         }
+
+
 
     }
 
 
-
 }
+
+
+
+
+

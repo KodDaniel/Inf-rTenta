@@ -14,44 +14,22 @@ namespace ExtensionMethodInförTenta
             // metod till den fördefinierade klassen List. Metoden skall returnera elementen i
             // omvänd ordning i form av en sträng.
 
-            List<Person> lista = new List<Person>
-            {
-                new Person()
-                {
-                    Namn = "Daniel Åhlin",
-                },
-                new Person()
-                {
-                    Namn = "Oskar Hedman"
-                }
-            };
+         
 
         }
     }
 
-    public class Person
-    {
-        public string Namn { get; set; }
-    }
+  
     // Elementen betyder ord, inte bokstäver.
     public static class StaticNonGenericClass
     {
-        public static string Reverse <T>(this List<T> items)
+        public static List<int> ListOfNumbers = new List<int> {1,2,3,4,5};
+        public static List<string> ListOfStrings = new List<string> {"Hej", "Vad", "Händer?"};
+
+        public static List<T> ReverseList <T>(this List<T> listToReverse)
         {
-            string outPut = "";
-            int i;
-
-            foreach (var item in items)
-            {
-                outPut = item.ToString() + "," + outPut;
-            }
-
-            if ((i = outPut.LastIndexOf("."))> 0)
-            {
-                outPut = outPut.Substring(0, i);
-                
-            }
-            return outPut;
+            listToReverse.Reverse();
+            return listToReverse;
         }
     }
 }
