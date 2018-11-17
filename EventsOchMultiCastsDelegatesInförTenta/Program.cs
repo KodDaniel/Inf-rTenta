@@ -12,6 +12,8 @@ namespace EventsBankkonto
         static void ReciverSaldoChange(object sender, SaldoArgs e)
         {
             Console.WriteLine(e.NewSaldo);
+            Console.ReadLine();
+
 
         }
 
@@ -22,7 +24,6 @@ namespace EventsBankkonto
 
             //Om vi vill testköra
             konto.Saldo = 300;
-            Console.ReadLine();
         }
     }
 

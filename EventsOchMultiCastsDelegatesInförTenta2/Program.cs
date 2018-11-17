@@ -18,6 +18,8 @@ namespace EventsRanking
           var rankingObject = new Ranking();
           rankingObject.NyttBästaResultat += RankingReciver;
           
+            //var nyttResultat = new  Resultat {Spelarnamn = "Daniel", Poäng = 3};
+            //rankingObject.NyttBästaResultatEllerInte(nyttResultat);
         }    
 
     }  
