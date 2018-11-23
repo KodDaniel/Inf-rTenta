@@ -10,14 +10,49 @@ namespace EventsOrdinareOOP2TentaFråga
     {
         static void Main(string[] args)
         {
-            // Tentafråga Events (flera klasser behöver implementeras)
+            var repo = new CodeRepository(
+             "class Car {public string Brand {get;set;} }"                 
+                );
+
+       
+        
+            // Upprättar prenumeration
+            repo.Codechanging += Repo_CodeChanging;
+            repo.Codechanging += Repo_CodeChanging2;
+
+        }
+
+        // EventReciver 1; Denna metod prenumerar på mitt CodeChanging-Event och kommer därmed...
+        //...alltid anropas. Men om if-satsen inte är true så jag ju bara gå rakt igenom metoden utan åtgärd.
+        static void Repo_CodeChanging(object sender, CodeChangingEventArgs e)
+        {
+            Console.WriteLine("Checking Rule: no swedish (åäö)");
+
+            if (e.ReplaceStr.Any(x => "å,ä,ö".Contains(x)))
+            {
+                e.RejectOperation();
+            }
+        }
+        // EventReciver 2: Denna metod prenumerar på mitt CodeChanging-Event och kommer därmed...
+        //...alltid anropas. Men om if-satsen inte är true så jag ju bara gå rakt igenom metoden utan åtgärd.
+        static void Repo_CodeChanging2(object sender, CodeChangingEventArgs e)
+        {
+            Console.WriteLine("Checking Rule. locked code base from char 6 to 8");
+            int lockedFrom = 6;
+            int lockedTo = 8;
+
+            if (e.From >= lockedFrom && e.From <= lockedTo || e.To >= lockedFrom && e.To <= lockedTo)
+            {
+                e.RejectOperation();
+            }
+
         }
     }
 
     class RejectableEventArgs : EventArgs
     {
         private bool _isRejected = false;
-
+         
         public bool IsOperationRejected
         {
             get
@@ -26,6 +61,7 @@ namespace EventsOrdinareOOP2TentaFråga
             }
         }
 
+       // Om denna metod anropas innebär det att Operation är rejected. 
         public void RejectOperation()
         {
             this._isRejected = true;
@@ -46,23 +82,38 @@ namespace EventsOrdinareOOP2TentaFråga
         }
     }
 
-    class CodeRepository
+    class CodeRepo
     {
-        // Ska utlösas INNAN förändringen i kodbasen genomförs.
-        public event EventHandler<CodeChangingEventArgs> Codechanging;
 
-        // Anropas när en utvecklare föreslår en ändring i databasen
-        public void ProposeChange(int from, int to, string replaceStr)
+        //Koden kan förvaras i en privat sträng
+        private string _code;
+
+        //Sätt "code" till ett värde när repot skapas. 
+        public CodeRepo(string firstCode)
         {
+            _code = firstCode;
 
+            
         }
 
-        protected void OnProposedChange(CodeChangingEventArgs args)
+        public void ProposeChange(int from, int to, string replacestr)
         {
-            if (Codechanging != null)
-            {
-                Codechanging(this, args);
-            }
+
+            //Plocka ut värdet av code från början fram till dess att den ska ändras
+            string firstHalfOfOldCode = _code.Substring(0, from);
+
+            //Plocka ut värdet av code från det att den ska ändras, t.o.m slutet
+            string secondHalfOfOldCode = _code.Substring(to, _code.Length);
+
+            //Sätt ihop den första halvan av det som ska behållas av koden, det nya värdet, och den andra halvan av det som ska behållas
+            string newCode = firstHalfOfOldCode + replacestr + secondHalfOfOldCode;
+
+            //Trigga eventet "Code Changing"
+
+            //Sätt det nya värdet
+            _code = newCode;
         }
     }
 }
+
+
