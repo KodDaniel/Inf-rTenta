@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,6 +72,10 @@ namespace EventsOrdinareOOP2TentaFråga
     class CodeChangingEventArgs : RejectableEventArgs
     {
         public int From { get; private set; }
+
+       
+
+
         public int To { get; private set; }
         public string ReplaceStr { get; private set; }
 

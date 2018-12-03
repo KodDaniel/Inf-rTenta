@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OverridingOperators2", "Ove
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsOrdinareOOP2TentaFråga", "EventsOrdinareOOP2TentaFråga\EventsOrdinareOOP2TentaFråga.csproj", "{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRASP", "GRASP\GRASP.csproj", "{4DFA6265-10A5-4435-8800-AF254FDA6786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7518041B-BF50-465B-8A9A-3BBB3BF9D39D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DFA6265-10A5-4435-8800-AF254FDA6786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFA6265-10A5-4435-8800-AF254FDA6786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFA6265-10A5-4435-8800-AF254FDA6786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFA6265-10A5-4435-8800-AF254FDA6786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

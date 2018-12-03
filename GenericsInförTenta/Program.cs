@@ -27,6 +27,23 @@ namespace GenericsInförTenta
         }
     }
 
+    public class GenericClass<T> where T : struct
+    {
+        public bool Compare(T a, T b)
+        {
+            return a.Equals(b);
+        }
+    }
+
+    public class NonGenericClass
+
+    {
+        public bool Compare<T>(T a, T b) where T : struct
+        {
+            return a.Equals(b);
+        }
+    }
+
     public class Påse<T>
     {
         private List<T> _saker = new List<T>();
