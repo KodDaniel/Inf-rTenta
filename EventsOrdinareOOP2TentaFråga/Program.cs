@@ -89,7 +89,7 @@ namespace EventsOrdinareOOP2TentaFråga
         //Förvaras i egenskap med private set, härleder det ur utseendet på program.cs 
         public string CodeBase { get; private set; }
 
-        //Sätt "code" till ett värde när repot skapas. 
+        //Sätt "CodeBase" till ett värde när repot skapas. 
         public CodeRepository(string firstCode)
         {
             CodeBase = firstCode;
@@ -99,10 +99,10 @@ namespace EventsOrdinareOOP2TentaFråga
         public void ProposeChange(int from, int to, string replacestr)
         {
 
-            //Plocka ut värdet av code från början fram till dess att den ska ändras
+            //Plocka ut värdet av CodeBase från början fram till dess att den ska ändras
             string firstHalfOfOldCode = CodeBase.Substring(0, from);
 
-            //Plocka ut värdet av code från det att den ska ändras, t.o.m slutet
+            //Plocka ut värdet av CodeBase från det att den ska ändras, t.o.m slutet
             string secondHalfOfOldCode = CodeBase.Substring(to + 1, (CodeBase.Length - (to + 1)));
 
             //Sätt ihop den första halvan av det som ska behållas av koden, det nya värdet, och den andra halvan av det som ska behållas
