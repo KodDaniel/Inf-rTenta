@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,17 +17,46 @@ namespace EventsOrdinareOOP2TentaFråga
 
             Console.WriteLine("Init codebase: " + repo.CodeBase);
 
-            Console.ReadLine();
 
             // Upprättar prenumeration
             repo.CodeChanging += Repo_CodeChanging;
             repo.CodeChanging += Repo_CodeChanging2;
 
-            repo.ProposeChange(6,8,"Katt");
+            try  // Rad 12
+            {
+                repo.ProposeChange(1, 3, "å");
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Operation was rejected");
+            } // rad 16
+
+            try 
+            {
+                repo.ProposeChange(26, 30, "Märke");
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Operation was rejected");
+            }
+
+            try
+            {
+                repo.ProposeChange(39, 39, "private");
+            }
+            catch (InvalidOperationException)
+            {
+                Console.WriteLine("Operation was rejected");
+
+            }
+
+            Console.WriteLine("Current codebase: " + repo.CodeBase);
+
+            Console.ReadLine();
+
         }
 
-        // EventReciver 1; Denna metod prenumerar på mitt CodeChanging-Event och kommer därmed...
-        //...alltid anropas. Men om if-satsen inte är true så jag ju bara gå rakt igenom metoden utan åtgärd.
+        // EventReciver 1
         static void Repo_CodeChanging(object sender, CodeChangingEventArgs e)
         {
             Console.WriteLine("Checking Rule: no swedish (åäö)");
@@ -35,9 +66,7 @@ namespace EventsOrdinareOOP2TentaFråga
                 e.RejectOperation();
             }
         }
-
-        // EventReciver 2: Denna metod prenumerar på mitt CodeChanging-Event och kommer därmed...
-        //...alltid anropas. Men om if-satsen inte är true så jag ju bara gå rakt igenom metoden utan åtgärd.
+        // EventReciver 2
         static void Repo_CodeChanging2(object sender, CodeChangingEventArgs e)
         {
             Console.WriteLine("Checking Rule. locked code base from char 6 to 8");
@@ -61,7 +90,7 @@ namespace EventsOrdinareOOP2TentaFråga
             get { return this._isRejected; }
         }
 
-        // Om denna metod anropas innebär det att Operation är rejected. 
+        // Om denna metod anropas innebär det att Operation kommer sättas till rejected. 
         public void RejectOperation()
         {
             this._isRejected = true;
@@ -103,18 +132,31 @@ namespace EventsOrdinareOOP2TentaFråga
             string firstHalfOfOldCode = CodeBase.Substring(0, from);
 
             //Plocka ut värdet av CodeBase från det att den ska ändras, t.o.m slutet
-            string secondHalfOfOldCode = CodeBase.Substring(to + 1, (CodeBase.Length - (to + 1)));
+            string secondHalfOfOldCode = CodeBase.Substring(to + 1, CodeBase.Length - (to + 1));
 
-            //Sätt ihop den första halvan av det som ska behållas av koden, det nya värdet, och den andra halvan av det som ska behållas
-            string newCode = firstHalfOfOldCode + replacestr + secondHalfOfOldCode;
+            //Sätt ihop den första halvan av det som ska behållas av koden, det nya värdet,
+            //och den andra halvan av det som ska behållas.
+            string newUpdatedCode = firstHalfOfOldCode + replacestr + secondHalfOfOldCode;
 
+            // Skapar event-objekt och lägger in information som ska skickas till Event recivers
+            var eventObject = new CodeChangingEventArgs(from, to, replacestr);
+            
             //Trigga eventet "Code Changing"
-            OnCodeChanging(new CodeChangingEventArgs(from, to, replacestr));
+               OnCodeChanging(eventObject);
 
-            //Sätt det nya värdet
-            CodeBase = newCode;
+            // Om vi nu har att IsOperationRecjted - kasta  InvalidOperationException
+            if (eventObject.IsOperationRejected)
+            {
+                throw new InvalidOperationException();
+            }
+            else
+            {
+                //Annnars: Operationen är godkänd och vi sätter det nya värdet
+                CodeBase = newUpdatedCode;
+            }
+                    
         }
-
+        // Event publisher
         protected void OnCodeChanging(CodeChangingEventArgs args)
         {
             if (CodeChanging != null)
@@ -122,7 +164,6 @@ namespace EventsOrdinareOOP2TentaFråga
                 CodeChanging(this, args);
             }
         }
-
     }
 }
 
