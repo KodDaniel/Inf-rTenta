@@ -24,7 +24,7 @@ namespace EventsOrdinareOOP2TentaFråga
 
             try  // Rad 12
             {
-                repo.ProposeChange(1, 3, "å");
+                repo.ProposeChange(6, 8, "Bil");
             }
             catch (InvalidOperationException)
             {
