@@ -8,20 +8,27 @@ namespace EventsRanking
 {
     class Program
     {
+       
+
+        static void Main(string[] args)
+        {
+            // rankingObject är instans av publisher-klass
+          var rankingObject = new Ranking();
+          rankingObject.NyttBästaResultat += RankingReciver;
+
+
+        }
+
+
+
+
+
+
+
         public static void RankingReciver(object sender, RankingArgs e)
         {
             Console.WriteLine(e.Spelarnamn + " " + e.Poäng);
         }
-
-        static void Main(string[] args)
-        {
-          var rankingObject = new Ranking();
-          rankingObject.NyttBästaResultat += RankingReciver;
-          
-            //var nyttResultat = new  Resultat {Spelarnamn = "Daniel", Poäng = 3};
-            //rankingObject.NyttBästaResultatEllerInte(nyttResultat);
-        }    
-
     }  
     // (Klassen Resultat är FÖRDEFINIERAD I TENTAN)
     public class Resultat
