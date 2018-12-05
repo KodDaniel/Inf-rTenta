@@ -125,10 +125,10 @@ namespace GRASP
             this.Square = square;
         }
 
-        public Square GetLocation(i)
-        {
+        //public Square GetLocation(i)
+        //{
 
-        }
+        //}
 
     }
 

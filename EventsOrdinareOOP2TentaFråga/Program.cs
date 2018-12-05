@@ -13,12 +13,15 @@ namespace EventsOrdinareOOP2TentaFråga
         {
             var repo = new CodeRepository("class Car {public string Brand {get;set;} }");
 
+            Console.WriteLine("Init codebase: " + repo.CodeBase);
+
+            Console.ReadLine();
+
             // Upprättar prenumeration
             repo.CodeChanging += Repo_CodeChanging;
             repo.CodeChanging += Repo_CodeChanging2;
 
             repo.ProposeChange(6,8,"Katt");
-            
         }
 
         // EventReciver 1; Denna metod prenumerar på mitt CodeChanging-Event och kommer därmed...
@@ -81,16 +84,15 @@ namespace EventsOrdinareOOP2TentaFråga
 
     class CodeRepository
     {
-
         public EventHandler<CodeChangingEventArgs> CodeChanging;
 
-        //Koden kan förvaras i en privat sträng
-        private string _code;
+        //Förvaras i egenskap med private set, härleder det ur utseendet på program.cs 
+        public string CodeBase { get; private set; }
 
         //Sätt "code" till ett värde när repot skapas. 
         public CodeRepository(string firstCode)
         {
-            _code = firstCode;
+            CodeBase = firstCode;
 
         }
 
@@ -98,10 +100,10 @@ namespace EventsOrdinareOOP2TentaFråga
         {
 
             //Plocka ut värdet av code från början fram till dess att den ska ändras
-            string firstHalfOfOldCode = _code.Substring(0, from);
+            string firstHalfOfOldCode = CodeBase.Substring(0, from);
 
             //Plocka ut värdet av code från det att den ska ändras, t.o.m slutet
-            string secondHalfOfOldCode = _code.Substring(to + 1, (_code.Length - (to + 1)));
+            string secondHalfOfOldCode = CodeBase.Substring(to + 1, (CodeBase.Length - (to + 1)));
 
             //Sätt ihop den första halvan av det som ska behållas av koden, det nya värdet, och den andra halvan av det som ska behållas
             string newCode = firstHalfOfOldCode + replacestr + secondHalfOfOldCode;
@@ -110,7 +112,7 @@ namespace EventsOrdinareOOP2TentaFråga
             OnCodeChanging(new CodeChangingEventArgs(from, to, replacestr));
 
             //Sätt det nya värdet
-            _code = newCode;
+            CodeBase = newCode;
         }
 
         protected void OnCodeChanging(CodeChangingEventArgs args)
