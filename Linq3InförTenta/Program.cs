@@ -15,13 +15,9 @@ namespace Linq3InförTenta
             var db = new DB();
             var svar = db.Orders.Select(o =>
                 new
-                {
-                    // sparar namnet på vår kund i ett kundobjekt
-                    // o är enbart en instans av klassen order.
-                    // or är OCKSÅ enbart en instans av klassen order.
+                {   // o är enbart en instans av klassen order.
+                    // or är YTTERLIGARE EN (en annan) instans av klassen order.                   
                     Kund = o.Kund.Namn,
-                    // WHERE vår kund är lika med en kund på orderlista -> räkna det totala priset
-
                     Summa = db.Orders.Where(or => or.Kund == o.Kund).Sum(or => or.Produkt.Pris)
                 } );
 

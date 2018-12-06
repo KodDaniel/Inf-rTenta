@@ -11,18 +11,25 @@ namespace DelegaterTenta
     class Program
     {
         // Deklarerar en delegattyp
-        public delegate int Addition(int tal1, int tal2);
-   
+        public delegate void PrintHandler(string text);
+
 
         static void Main(string[] args)
         {
 
-           var enumerableWithNumbers = Enumerable.Range(0, 10);
-        
-            // Skriver ut på konsolen med Lambda Expression.
-            enumerableWithNumbers.ToList().ForEach(x=>Console.WriteLine(x));
+            // Tilldening av första variabel: Skriver ut "Modo är inte bra"
+            PrintHandler printHandler = text => Console.WriteLine(text);
+            // Vi gör delegaten till multicast genom att tilldela ytterligare metod. Ger utskriften:
+            // "Du skrev alltså: Modo är inte bra"
+            printHandler += text => Console.WriteLine("Du skrev: alltså " + text);          
+            // Anropar vår multicast delegate
+            printHandler("Modo är inte bra");
             Console.ReadLine();
+
+
         }
+
+      
     }
 
 
